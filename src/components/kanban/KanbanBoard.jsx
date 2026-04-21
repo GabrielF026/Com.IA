@@ -39,12 +39,12 @@ function LeadCard({ lead, stageId, onSelect }) {
       }
       onClick={() => onSelect?.(lead)}
       style={{
-        background: "#ffffff",
+        background: "var(--surface-1)",
         border: "1px solid var(--border-color)",
-        borderRadius: 12,
+        borderRadius: 8,
         padding: "14px 16px",
         marginBottom: 10,
-        boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
+        boxShadow: "var(--shadow-sm)",
         transition: "box-shadow 0.2s, transform 0.15s",
         userSelect: "none",
         cursor: "grab",
@@ -54,14 +54,14 @@ function LeadCard({ lead, stageId, onSelect }) {
         e.currentTarget.style.transform = "translateY(-1px)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.06)";
+        e.currentTarget.style.boxShadow = "var(--shadow-sm)";
         e.currentTarget.style.transform = "translateY(0)";
       }}
     >
       {/* HEADER */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <div style={{ width: 32, height: 32, borderRadius: "50%", background: "var(--gray-100)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+          <div style={{ width: 32, height: 32, borderRadius: "50%", background: "var(--surface-3)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
             <User2 size={15} color="var(--gray-500)" />
           </div>
           <div>
@@ -77,11 +77,11 @@ function LeadCard({ lead, stageId, onSelect }) {
 
       {/* DATA */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
-        <div style={{ background: "var(--surface-2)", borderRadius: 8, padding: "7px 10px" }}>
+        <div style={{ background: "var(--surface-3)", borderRadius: 8, padding: "7px 10px", border: "1px solid var(--border-color)" }}>
           <div style={{ fontSize: 10, color: "var(--gray-400)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: 3 }}>CPF</div>
           <div style={{ fontSize: 12, color: "var(--gray-700)", fontWeight: 500 }}>{lead.cpf || "—"}</div>
         </div>
-        <div style={{ background: "var(--surface-2)", borderRadius: 8, padding: "7px 10px" }}>
+        <div style={{ background: "var(--surface-3)", borderRadius: 8, padding: "7px 10px", border: "1px solid var(--border-color)" }}>
           <div style={{ fontSize: 10, color: "var(--gray-400)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: 3 }}>Dívida</div>
           <div style={{ fontSize: 12, color: "var(--brand-700)", fontWeight: 700 }}>
             {lead.divida_valor ? new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(lead.divida_valor) : "—"}
@@ -170,7 +170,7 @@ function KanbanColumn({ stage, leads, onMoveLead, onSelectLead }) {
                 transition: "box-shadow 0.18s",
               }}
             />
-            <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--gray-800)", margin: 0 }}>
+            <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--gray-900)", margin: 0 }}>
               {stage.nome}
             </h3>
           </div>
@@ -195,7 +195,7 @@ function KanbanColumn({ stage, leads, onMoveLead, onSelectLead }) {
         style={{
           padding: "8px 10px",
           borderBottom: `1px solid ${isDragOver ? `${colors.accent}30` : "var(--border-color)"}`,
-          background: isDragOver ? `${colors.accent}06` : "#fff",
+          background: isDragOver ? `${colors.accent}06` : "var(--surface-1)",
           transition: "background 0.18s",
         }}
       >
@@ -204,7 +204,7 @@ function KanbanColumn({ stage, leads, onMoveLead, onSelectLead }) {
             display: "flex",
             alignItems: "center",
             gap: 7,
-            background: searchFocused ? "#fff" : "var(--surface-2)",
+            background: searchFocused ? "var(--surface-1)" : "var(--surface-3)",
             border: `1.5px solid ${searchFocused ? colors.accent : "var(--border-color)"}`,
             borderRadius: 9,
             padding: "6px 10px",
@@ -231,7 +231,7 @@ function KanbanColumn({ stage, leads, onMoveLead, onSelectLead }) {
               outline: "none",
               fontSize: 12,
               fontFamily: "var(--font-base)",
-              color: "var(--gray-800)",
+              color: "var(--gray-900)",
               background: "transparent",
               minWidth: 0,
             }}
@@ -344,7 +344,7 @@ function NewLeadModal({ open, onClose }) {
   const inputStyle = {
     width: "100%", padding: "9px 12px", border: "1px solid var(--border-color)",
     borderRadius: 8, fontSize: 14, fontFamily: "var(--font-base)", outline: "none",
-    color: "var(--gray-800)", background: "#fff", boxSizing: "border-box",
+    color: "var(--gray-900)", background: "var(--surface-1)", boxSizing: "border-box",
   };
   const labelStyle = { display: "block", fontSize: 12, fontWeight: 600, color: "var(--gray-600)", marginBottom: 5 };
 
@@ -354,7 +354,7 @@ function NewLeadModal({ open, onClose }) {
       onClick={onClose}
     >
       <div
-        style={{ background: "#fff", borderRadius: 16, width: "100%", maxWidth: 440, padding: 28, boxShadow: "0 20px 60px rgba(0,0,0,0.2)" }}
+        style={{ background: "var(--surface-1)", border: "1px solid var(--border-color)", borderRadius: 16, width: "100%", maxWidth: 440, padding: 28, boxShadow: "0 20px 60px rgba(0,0,0,0.2)" }}
         onClick={(e) => e.stopPropagation()}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>

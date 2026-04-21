@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import { useUserStore } from "./store/UserStore";
+import { applyTheme, useThemeStore } from "./store/themeStore";
 
 import PublicLayout from "./components/layout/PublicLayout";
 import PrivateLayout from "./components/layout/PrivateLayout";
@@ -33,6 +34,7 @@ import Configuracoes from "./pages/configuracoes";
 
 export default function App() {
   const setUser = useUserStore((state) => state.setUser);
+  const theme = useThemeStore((state) => state.theme);
 
   // 🔥 ESCUTA LOGIN / LOGOUT DO FIREBASE
   useEffect(() => {
@@ -43,6 +45,10 @@ export default function App() {
 
     return () => unsubscribe();
   }, [setUser]);
+
+  useEffect(() => {
+    applyTheme(theme);
+  }, [theme]);
 
   return (
     <Routes>

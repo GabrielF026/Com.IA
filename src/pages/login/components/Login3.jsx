@@ -35,14 +35,17 @@ export default function Login3() {
     width: "100%",
     padding: "11px 14px 11px 42px",
     border: "1.5px solid #e2e8f0",
-    borderRadius: 10,
+    borderRadius: 8,
     fontSize: 14,
     fontFamily: "Inter, sans-serif",
     outline: "none",
     color: "#1e293b",
-    background: "#fff",
-    transition: "border-color 0.2s",
+    background: "#ffffff",
+    transition: "border-color 0.2s, box-shadow 0.2s, background-color 0.2s",
     boxSizing: "border-box",
+    boxShadow: "0 1px 2px rgba(15,23,42,0.04)",
+    appearance: "none",
+    WebkitAppearance: "none",
   };
 
   return (
@@ -122,7 +125,7 @@ export default function Login3() {
             <div>
               <label style={{ display: "block", fontSize: 13, fontWeight: 600, color: "#475569", marginBottom: 6 }}>E-mail</label>
               <div style={{ position: "relative" }}>
-                <Mail size={15} color="#94a3b8" style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)" }} />
+                <Mail size={15} color="#94a3b8" style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", zIndex: 1 }} />
                 <input
                   id="email"
                   type="email"
@@ -131,8 +134,17 @@ export default function Login3() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   style={inputStyle}
-                  onFocus={(e) => { e.target.style.borderColor = "#22c55e"; }}
-                  onBlur={(e) => { e.target.style.borderColor = "#e2e8f0"; }}
+                  autoComplete="email"
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#22c55e";
+                    e.target.style.boxShadow = "0 0 0 3px rgba(34,197,94,0.12)";
+                    e.target.style.background = "#ffffff";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#e2e8f0";
+                    e.target.style.boxShadow = "0 1px 2px rgba(15,23,42,0.04)";
+                    e.target.style.background = "#ffffff";
+                  }}
                 />
               </div>
             </div>
@@ -144,7 +156,7 @@ export default function Login3() {
                 <span style={{ fontSize: 12, color: "#22c55e", cursor: "pointer", fontWeight: 500 }}>Esqueceu a senha?</span>
               </div>
               <div style={{ position: "relative" }}>
-                <Lock size={15} color="#94a3b8" style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)" }} />
+                <Lock size={15} color="#94a3b8" style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", zIndex: 1 }} />
                 <input
                   id="password"
                   type="password"
@@ -153,8 +165,17 @@ export default function Login3() {
                   onChange={(e) => setSenha(e.target.value)}
                   required
                   style={inputStyle}
-                  onFocus={(e) => { e.target.style.borderColor = "#22c55e"; }}
-                  onBlur={(e) => { e.target.style.borderColor = "#e2e8f0"; }}
+                  autoComplete="current-password"
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#22c55e";
+                    e.target.style.boxShadow = "0 0 0 3px rgba(34,197,94,0.12)";
+                    e.target.style.background = "#ffffff";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#e2e8f0";
+                    e.target.style.boxShadow = "0 1px 2px rgba(15,23,42,0.04)";
+                    e.target.style.background = "#ffffff";
+                  }}
                 />
               </div>
             </div>

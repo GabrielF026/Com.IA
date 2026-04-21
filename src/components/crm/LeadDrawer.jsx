@@ -123,7 +123,7 @@ function Timeline({ events }) {
             <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start", position: "relative" }}>
               <div style={{
                 width: 27, height: 27, borderRadius: "50%",
-                background: "#fff",
+                background: "var(--surface-1)",
                 border: `2px solid ${cfg.color}40`,
                 boxShadow: `0 0 0 3px ${cfg.bg}`,
                 display: "flex", alignItems: "center", justifyContent: "center",
@@ -195,7 +195,7 @@ export default function LeadDrawer({ lead, onClose }) {
           width: 460,
           maxWidth: "90vw",
           height: "100%",
-          background: "#fff",
+          background: "var(--surface-1)",
           boxShadow: "-8px 0 40px rgba(0,0,0,0.14)",
           display: "flex",
           flexDirection: "column",
@@ -207,7 +207,7 @@ export default function LeadDrawer({ lead, onClose }) {
         <div style={{ padding: "20px 22px 14px", borderBottom: "1px solid var(--border-color)", background: "var(--surface-2)", flexShrink: 0 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 11 }}>
-              <div style={{ width: 42, height: 42, borderRadius: "50%", background: "var(--gray-100)", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid var(--border-color)", flexShrink: 0 }}>
+              <div style={{ width: 42, height: 42, borderRadius: "50%", background: "var(--surface-3)", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid var(--border-color)", flexShrink: 0 }}>
                 <User2 size={20} color="var(--gray-500)" />
               </div>
               <div>
@@ -219,7 +219,7 @@ export default function LeadDrawer({ lead, onClose }) {
             <button
               onClick={onClose}
               style={{ background: "none", border: "none", cursor: "pointer", padding: 6, color: "var(--gray-400)", borderRadius: 8 }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "var(--gray-100)"; }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "var(--surface-3)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "none"; }}
             >
               <X size={18} />
@@ -241,7 +241,7 @@ export default function LeadDrawer({ lead, onClose }) {
             )}
 
             {lead.cpf && (
-              <span style={{ fontSize: 11, fontWeight: 500, color: "var(--gray-500)", background: "var(--gray-100)", padding: "3px 10px", borderRadius: 99 }}>
+              <span style={{ fontSize: 11, fontWeight: 500, color: "var(--gray-500)", background: "var(--surface-3)", padding: "3px 10px", borderRadius: 99 }}>
                 {lead.cpf}
               </span>
             )}
@@ -249,7 +249,7 @@ export default function LeadDrawer({ lead, onClose }) {
         </div>
 
         {/* ── TABS ── */}
-        <div style={{ display: "flex", borderBottom: "1px solid var(--border-color)", background: "#fff", flexShrink: 0 }}>
+        <div style={{ display: "flex", borderBottom: "1px solid var(--border-color)", background: "var(--surface-1)", flexShrink: 0 }}>
           {TABS.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -350,10 +350,11 @@ export default function LeadDrawer({ lead, onClose }) {
                       key={i}
                       style={{
                         gridColumn: `span ${f.col}`,
-                        background: "var(--surface-2)",
+                        background: "var(--surface-1)",
                         border: "1px solid var(--border-color)",
                         borderRadius: 10,
                         padding: "11px 14px",
+                        boxShadow: "var(--shadow-sm)",
                       }}
                     >
                       <div style={{ fontSize: 10, fontWeight: 600, color: "var(--gray-400)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 5 }}>

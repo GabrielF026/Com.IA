@@ -10,7 +10,10 @@ import {
   LogOut,
   ChevronRight,
   Zap,
+  Moon,
+  Sun,
 } from "lucide-react";
+import { useThemeStore } from "../../store/themeStore";
 
 const navItems = [
   {
@@ -55,6 +58,8 @@ export default function Sidebar() {
   const navigate = useNavigate();
   const logout = useUserStore((s) => s.logout);
   const user = useUserStore((s) => s.user);
+  const theme = useThemeStore((s) => s.theme);
+  const toggleTheme = useThemeStore((s) => s.toggleTheme);
   const role = user?.role || "vendedor";
 
   function handleLogout() {
@@ -68,7 +73,7 @@ export default function Sidebar() {
     <aside
       style={{
         width: "var(--sidebar-width)",
-        backgroundColor: "var(--sidebar-bg)",
+        background: "var(--sidebar-bg)",
         display: "flex",
         flexDirection: "column",
         height: "100vh",
@@ -233,6 +238,41 @@ export default function Sidebar() {
             </div>
           </div>
         )}
+
+        <button
+          onClick={toggleTheme}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            width: "100%",
+            padding: "10px 12px",
+            borderRadius: 8,
+            fontSize: 13,
+            fontWeight: 600,
+            color: "var(--sidebar-text)",
+            background: "var(--sidebar-hover-bg)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            cursor: "pointer",
+            transition: "all 0.15s",
+            marginBottom: 6,
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = "rgba(0,201,122,0.28)";
+            e.currentTarget.style.color = "#f8fafc";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+            e.currentTarget.style.color = "var(--sidebar-text)";
+          }}
+        >
+          {theme === "dark" ? (
+            <Sun size={15} strokeWidth={1.9} />
+          ) : (
+            <Moon size={15} strokeWidth={1.9} />
+          )}
+          {theme === "dark" ? "Modo claro" : "Modo escuro"}
+        </button>
 
         <button
           onClick={handleLogout}
